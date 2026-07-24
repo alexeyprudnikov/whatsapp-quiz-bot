@@ -1,0 +1,69 @@
+{
+  "start_node": "dsgvo_consent",
+  "nodes": {
+    "dsgvo_consent": {
+      "text": "Willkommen bei der Fahrschule Muster! 🚗\n\nUm Ihre Anfrage bearbeiten zu können, müssen wir Ihre Daten verarbeiten. Details finden Sie in unserer Datenschutzerklärung: https://example-fahrschule.de/datenschutz",
+      "type": "buttons",
+      "options": [
+        {"id": "btn_dsgvo_yes", "title": "Zustimmen ✅", "next_node": "category_select"},
+        {"id": "btn_dsgvo_no", "title": "Ablehnen ❌", "next_node": "dsgvo_declined"}
+      ]
+    },
+    "dsgvo_declined": {
+      "text": "Schade! Ohne Ihre Zustimmung können wir Ihre Anfrage leider nicht bearbeiten. Schreiben Sie «Start», falls Sie es sich anders überlegen.",
+      "type": "final"
+    },
+    "category_select": {
+      "text": "Welche Führerscheinklasse interessiert Sie?",
+      "type": "buttons",
+      "options": [
+        {"id": "btn_cat_b", "title": "Kategorie B (PKW)", "next_node": "exp_check"},
+        {"id": "btn_cat_a", "title": "Kategorie A (Krad)", "next_node": "season_check"}
+      ]
+    },
+    "exp_check": {
+      "text": "Haben Sie bereits Fahrerfahrung?",
+      "type": "buttons",
+      "options": [
+        {"id": "btn_exp_no", "title": "Nein, Anfänger", "next_node": "ask_name"},
+        {"id": "btn_exp_yes", "title": "Ja, Vorerfahrung", "next_node": "ask_name"}
+      ]
+    },
+    "season_check": {
+      "text": "Möchten Sie noch in dieser Saison starten?",
+      "type": "buttons",
+      "options": [
+        {"id": "btn_season_yes", "title": "Ja, sofort", "next_node": "ask_name"},
+        {"id": "btn_season_no", "title": "Nein, später", "next_node": "ask_name"}
+      ]
+    },
+    "ask_name": {
+      "text": "Wie ist Ihr vollständiger Name?",
+      "type": "text_input",
+      "variable": "user_name",
+      "next_node": "ask_phone"
+    },
+    "ask_phone": {
+      "text": "Unter welcher Telefonnummer können wir Sie erreichen? (z.B. +491701234567)",
+      "type": "text_input",
+      "variable": "user_phone",
+      "validation": "phone_de",
+      "next_node": "select_branch"
+    },
+    "select_branch": {
+      "type": "list",
+      "text": "Bitte wählen Sie Ihren bevorzugten Standort:",
+      "button_text": "Standort wählen",
+      "section_title": "Unsere Fahrschulen",
+      "options": [
+        {"id": "branch_center", "title": "Dresden Zentrum", "description": "Hauptstraße 12", "next_node": "final_thankyou"},
+        {"id": "branch_neustadt", "title": "Dresden Neustadt", "description": "Antonstraße 5", "next_node": "final_thankyou"},
+        {"id": "branch_sued", "title": "Dresden Süd", "description": "Zellsche Weg 8", "next_node": "final_thankyou"}
+      ]
+    },
+    "final_thankyou": {
+      "text": "Vielen Dank, {user_name}! Wir haben Ihre Anfrage erhalten. Ein Mitarbeiter wird sich in Kürze unter {user_phone} bei Ihnen melden.",
+      "type": "final"
+    }
+  }
+}
